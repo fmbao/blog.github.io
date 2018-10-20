@@ -3,6 +3,23 @@
   
     
     <entry>
+      <title>博客搭建</title>
+      <link href="/2018/10/20/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+      <url>/2018/10/20/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
+      
+        <content type="html"><![CDATA[<p>&#x603B;&#x7B97;&#x4E0B;&#x5B9A;&#x51B3;&#x5FC3;&#x8981;&#x628A;&#x535A;&#x5BA2;&#x642D;&#x5EFA;&#x8D77;&#x6765;&#x4E86;&#xFF0C;&#x4E4B;&#x524D;&#x4E00;&#x76F4;&#x56E0;&#x4E3A;&#x60F3;&#x627E;&#x5DE5;&#x4F5C;&#x7684;&#x539F;&#x56E0;&#xFF0C;&#x6CA1;&#x6709;&#x6574;&#x3002;&#x73B0;&#x5728;&#x6E05;&#x95F2;&#x4E0B;&#x6765;&#x4E86;&#xFF0C;&#x518D;&#x52A0;&#x4E0A;&#x6700;&#x8FD1;&#x5FC3;&#x6001;&#x653E;&#x677E;&#x4E86;&#xFF0C;&#x4E0D;&#x592A;&#x60F3;&#x5B66;&#x4E60;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x60F3;&#x7740;&#x627E;&#x70B9;&#x4E1C;&#x897F;&#x73A9;&#x513F;&#x3002;</p><a id="more"></a><p>&#x6B63;&#x6587;&#x4E3B;&#x8981;&#x5206;&#x4E3A;&#x4E09;&#x4E2A;&#x90E8;&#x5206;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;&#x524D;&#x671F;&#x642D;&#x5EFA;&#x7684;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;&#xFF0C;&#x4E8C;&#x662F;&#x535A;&#x5BA2;&#x754C;&#x9762;&#x7684;&#x4FEE;&#x6539;&#x548C;&#x88C5;&#x9970;&#xFF0C;&#x4E09;&#x662F;&#x4F7F;&#x7528;hexo&#x5199;&#x535A;&#x5BA2;</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 技术 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2018/10/15/hello-world/"/>
       <url>/2018/10/15/hello-world/</url>
