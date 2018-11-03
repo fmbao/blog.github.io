@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>【论文笔记】GAN相关论文阅读笔记</title>
+      <link href="/2018/11/02/%E3%80%90%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%E3%80%91GAN%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
+      <url>/2018/11/02/%E3%80%90%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%E3%80%91GAN%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p>&#x5BF9;&#x6297;&#x751F;&#x6210;&#x7F51;&#x7EDC;&#x7684;&#x5B66;&#x4E60;</p><a id="more"></a><img src="/2018/11/02/&#x3010;&#x8BBA;&#x6587;&#x7B14;&#x8BB0;&#x3011;GAN&#x76F8;&#x5173;&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;/1.jpg" title="&#x5BF9;&#x6297;&#x751F;&#x6210;&#x7F51;&#x7EDC;"><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 论文阅读 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> GAN的相关论文 </tag>
+            
+            <tag> GAN的介绍 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>【1】爬虫学习</title>
       <link href="/2018/10/25/%E3%80%901%E3%80%91%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/"/>
       <url>/2018/10/25/%E3%80%901%E3%80%91%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</url>
