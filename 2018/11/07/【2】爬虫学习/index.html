@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -127,7 +127,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
@@ -494,143 +494,11 @@
 <ul>
 <li>spider.py</li>
 </ul>
-<pre><code class="python"># &#x5728;URL&#x4E2D;&#x6CA1;&#x6709;&#x76F8;&#x5E94;&#x7684;&#x641C;&#x7D22;&#x5B57;&#x6BB5;&#xFF0C;&#x53EF;&#x4EE5;&#x5224;&#x65AD;&#x7F51;&#x9875;&#x5185;&#x5BB9;&#x662F;`Ajax`&#x52A0;&#x8F7D;&#xFF0C;&#x7136;&#x540E;&#x7528;`JavaScript`&#x6E32;&#x67D3;&#x51FA;&#x6765;&#x7684;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x5207;
-#&#x6362;&#x5230; XHR&#x8FC7;&#x6EE4;&#x9009;&#x9879;&#x5361;&#xFF0C;&#x53EF;&#x4EE5;&#x67E5;&#x770B;`Ajax`&#x8BF7;&#x6C42;&#x3002;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8BF7;&#x6C42;&#x662F;&#x5C5E;&#x4E8E;GET&#x8BF7;&#x6C42;&#x7684;&#xFF0C;&#x8BF7;&#x6C42;URL&#x7684;&#x53C2;&#x6570;&#x6709;offset&#xFF0C;#format&#xFF0C;keyword&#xFF0C;autoload&#xFF0C;count&#x548C;cur_tab &#x9700;&#x8981;&#x627E;&#x51FA;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x7684;&#x89C4;&#x5F8B;&#xFF0C;&#x8FD9;&#x6837;&#x624D;&#x80FD;&#x65B9;&#x4FBF;&#x5730;&#x6784;&#x9020;&#x7A0B;&#x5E8F;&#x3002;
-import json
-import os
-from urllib.parse import urlencode
-import pymongo
-import requests
-from bs4 import BeautifulSoup
-from requests.exceptions import ConnectionError
-import re
-from multiprocessing import Pool
-from hashlib import md5
-from json.decoder import JSONDecodeError
-from config import *
-
-#&#x7528;&#x6765;&#x548C;MongoDB&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x8FDE;&#x63A5;
-client = pymongo.MongoClient(MONGO_URL, connect=False)
-db = client[MONGO_DB]
-
-
-#&#x83B7;&#x53D6;URL&#x5185;&#x5BB9;
-def get_page_index(offset, keyword):
-    data = {
-        &apos;autoload&apos;: &apos;true&apos;,
-        &apos;count&apos;: 20,
-        &apos;cur_tab&apos;: 3,
-        &apos;format&apos;: &apos;json&apos;,
-        &apos;keyword&apos;: keyword,
-        &apos;offset&apos;: offset,
-    }
-    params = urlencode(data)
-    base = &apos;http://www.toutiao.com/search_content/&apos;
-    url = base + &apos;?&apos; + params
-    try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            return response.text
-        return None
-    except ConnectionError:
-        print(&apos;Error occurred&apos;)
-        return None
-
-# &#x4E0B;&#x8F7D;&#x56FE;&#x7247;
-def download_image(url):
-    print(&apos;Downloading&apos;, url)
-    try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            save_image(response.content)
-        return None
-    except ConnectionError:
-        return None
-
-# &#x4FDD;&#x5B58;&#x56FE;&#x7247;
-def save_image(content):
-    file_path = &apos;{0}/{1}.{2}&apos;.format(os.getcwd(), md5(content).hexdigest(), &apos;jpg&apos;)
-    print(file_path)
-    if not os.path.exists(file_path):
-        with open(file_path, &apos;wb&apos;) as f:
-            f.write(content)
-            f.close()
-
-# &#x89E3;&#x6790;&#x5BFC;&#x822A;&#x9875;
-def parse_page_index(text):
-    try:
-        data = json.loads(text)
-        if data and &apos;data&apos; in data.keys():
-            for item in data.get(&apos;data&apos;):
-                yield item.get(&apos;article_url&apos;)
-    except JSONDecodeError:
-        pass
-
-# &#x83B7;&#x53D6;&#x8BE6;&#x60C5;&#x9875;
-def get_page_detail(url):
-    try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            return response.text
-        return None
-    except ConnectionError:
-        print(&apos;Error occurred&apos;)
-        return None
-
-# &#x89E3;&#x6790;&#x8BE6;&#x60C5;&#x9875;
-def parse_page_detail(html, url):
-    soup = BeautifulSoup(html, &apos;lxml&apos;)
-    result = soup.select(&apos;title&apos;)
-    title = result[0].get_text() if result else &apos;&apos;
-    images_pattern = re.compile(&apos;gallery: JSON.parse\(&quot;(.*)&quot;\)&apos;, re.S)
-    result = re.search(images_pattern, html)
-    if result:
-        data = json.loads(result.group(1).replace(&apos;\\&apos;, &apos;&apos;))
-        if data and &apos;sub_images&apos; in data.keys():
-            sub_images = data.get(&apos;sub_images&apos;)
-            images = [item.get(&apos;url&apos;) for item in sub_images]
-            for image in images: download_image(image)
-            return {
-                &apos;title&apos;: title,
-                &apos;url&apos;: url,
-                &apos;images&apos;: images
-            }
-
-# &#x5B58;&#x50A8;&#x5230;&#x6570;&#x636E;&#x5E93;
-def save_to_mongo(result):
-    if db[MONGO_TABLE].insert(result):
-        print(&apos;Successfully Saved to Mongo&apos;, result)
-        return True
-    return False
-
-
-def main(offset):
-    text = get_page_index(offset, KEYWORD)
-    urls = parse_page_index(text)
-    for url in urls:
-        html = get_page_detail(url)
-        result = parse_page_detail(html, url)
-        if result: save_to_mongo(result)
-
-# &#x8FD9;&#x91CC;&#x5B9A;&#x4E49;&#x4E86;&#x5206;&#x9875;&#x7684;&#x8D77;&#x59CB;&#x9875;&#x6570;&#x548C;&#x7EC8;&#x6B62;&#x9875;&#x6570;&#xFF0C;&#x5206;&#x522B;GROUP_START &#x548C; GROUP_END&#xFF0C;&#x5229;&#x7528;&#x4E86;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x7EBF;&#x7A0B;&#x6C60;&#xFF0C;&#x5E76;&#x8C03;&#x7528;#`map`&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#x591A;&#x7EBF;&#x7A0B;&#x4E0B;&#x8F7D;
-if __name__ == &apos;__main__&apos;:
-    pool = Pool()
-    groups = ([x * 20 for x in range(GROUP_START, GROUP_END + 1)])
-    pool.map(main, groups)
-    pool.close()
-    pool.join()
-</code></pre>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#x5728;URL&#x4E2D;&#x6CA1;&#x6709;&#x76F8;&#x5E94;&#x7684;&#x641C;&#x7D22;&#x5B57;&#x6BB5;&#xFF0C;&#x53EF;&#x4EE5;&#x5224;&#x65AD;&#x7F51;&#x9875;&#x5185;&#x5BB9;&#x662F;`Ajax`&#x52A0;&#x8F7D;&#xFF0C;&#x7136;&#x540E;&#x7528;`JavaScript`&#x6E32;&#x67D3;&#x51FA;&#x6765;&#x7684;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x5207;</span></span><br><span class="line"><span class="comment">#&#x6362;&#x5230; XHR&#x8FC7;&#x6EE4;&#x9009;&#x9879;&#x5361;&#xFF0C;&#x53EF;&#x4EE5;&#x67E5;&#x770B;`Ajax`&#x8BF7;&#x6C42;&#x3002;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8BF7;&#x6C42;&#x662F;&#x5C5E;&#x4E8E;GET&#x8BF7;&#x6C42;&#x7684;&#xFF0C;&#x8BF7;&#x6C42;URL&#x7684;&#x53C2;&#x6570;&#x6709;offset&#xFF0C;#format&#xFF0C;keyword&#xFF0C;autoload&#xFF0C;count&#x548C;cur_tab &#x9700;&#x8981;&#x627E;&#x51FA;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x7684;&#x89C4;&#x5F8B;&#xFF0C;&#x8FD9;&#x6837;&#x624D;&#x80FD;&#x65B9;&#x4FBF;&#x5730;&#x6784;&#x9020;&#x7A0B;&#x5E8F;&#x3002;</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlencode</span><br><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> requests.exceptions <span class="keyword">import</span> ConnectionError</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> md5</span><br><span class="line"><span class="keyword">from</span> json.decoder <span class="keyword">import</span> JSONDecodeError</span><br><span class="line"><span class="keyword">from</span> config <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x7528;&#x6765;&#x548C;MongoDB&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x8FDE;&#x63A5;</span></span><br><span class="line">client = pymongo.MongoClient(MONGO_URL, connect=<span class="keyword">False</span>)</span><br><span class="line">db = client[MONGO_DB]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x83B7;&#x53D6;URL&#x5185;&#x5BB9;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_page_index</span><span class="params">(offset, keyword)</span>:</span></span><br><span class="line">    data = {</span><br><span class="line">        <span class="string">&apos;autoload&apos;</span>: <span class="string">&apos;true&apos;</span>,</span><br><span class="line">        <span class="string">&apos;count&apos;</span>: <span class="number">20</span>,</span><br><span class="line">        <span class="string">&apos;cur_tab&apos;</span>: <span class="number">3</span>,</span><br><span class="line">        <span class="string">&apos;format&apos;</span>: <span class="string">&apos;json&apos;</span>,</span><br><span class="line">        <span class="string">&apos;keyword&apos;</span>: keyword,</span><br><span class="line">        <span class="string">&apos;offset&apos;</span>: offset,</span><br><span class="line">    }</span><br><span class="line">    params = urlencode(data)</span><br><span class="line">    base = <span class="string">&apos;http://www.toutiao.com/search_content/&apos;</span></span><br><span class="line">    url = base + <span class="string">&apos;?&apos;</span> + params</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        response = requests.get(url)</span><br><span class="line">        <span class="keyword">if</span> response.status_code == <span class="number">200</span>:</span><br><span class="line">            <span class="keyword">return</span> response.text</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">except</span> ConnectionError:</span><br><span class="line">        print(<span class="string">&apos;Error occurred&apos;</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x4E0B;&#x8F7D;&#x56FE;&#x7247;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">download_image</span><span class="params">(url)</span>:</span></span><br><span class="line">    print(<span class="string">&apos;Downloading&apos;</span>, url)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        response = requests.get(url)</span><br><span class="line">        <span class="keyword">if</span> response.status_code == <span class="number">200</span>:</span><br><span class="line">            save_image(response.content)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">except</span> ConnectionError:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x4FDD;&#x5B58;&#x56FE;&#x7247;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_image</span><span class="params">(content)</span>:</span></span><br><span class="line">    file_path = <span class="string">&apos;{0}/{1}.{2}&apos;</span>.format(os.getcwd(), md5(content).hexdigest(), <span class="string">&apos;jpg&apos;</span>)</span><br><span class="line">    print(file_path)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(file_path):</span><br><span class="line">        <span class="keyword">with</span> open(file_path, <span class="string">&apos;wb&apos;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(content)</span><br><span class="line">            f.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x89E3;&#x6790;&#x5BFC;&#x822A;&#x9875;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_page_index</span><span class="params">(text)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        data = json.loads(text)</span><br><span class="line">        <span class="keyword">if</span> data <span class="keyword">and</span> <span class="string">&apos;data&apos;</span> <span class="keyword">in</span> data.keys():</span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> data.get(<span class="string">&apos;data&apos;</span>):</span><br><span class="line">                <span class="keyword">yield</span> item.get(<span class="string">&apos;article_url&apos;</span>)</span><br><span class="line">    <span class="keyword">except</span> JSONDecodeError:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x83B7;&#x53D6;&#x8BE6;&#x60C5;&#x9875;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_page_detail</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        response = requests.get(url)</span><br><span class="line">        <span class="keyword">if</span> response.status_code == <span class="number">200</span>:</span><br><span class="line">            <span class="keyword">return</span> response.text</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">except</span> ConnectionError:</span><br><span class="line">        print(<span class="string">&apos;Error occurred&apos;</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x89E3;&#x6790;&#x8BE6;&#x60C5;&#x9875;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_page_detail</span><span class="params">(html, url)</span>:</span></span><br><span class="line">    soup = BeautifulSoup(html, <span class="string">&apos;lxml&apos;</span>)</span><br><span class="line">    result = soup.select(<span class="string">&apos;title&apos;</span>)</span><br><span class="line">    title = result[<span class="number">0</span>].get_text() <span class="keyword">if</span> result <span class="keyword">else</span> <span class="string">&apos;&apos;</span></span><br><span class="line">    images_pattern = re.compile(<span class="string">&apos;gallery: JSON.parse\(&quot;(.*)&quot;\)&apos;</span>, re.S)</span><br><span class="line">    result = re.search(images_pattern, html)</span><br><span class="line">    <span class="keyword">if</span> result:</span><br><span class="line">        data = json.loads(result.group(<span class="number">1</span>).replace(<span class="string">&apos;\\&apos;</span>, <span class="string">&apos;&apos;</span>))</span><br><span class="line">        <span class="keyword">if</span> data <span class="keyword">and</span> <span class="string">&apos;sub_images&apos;</span> <span class="keyword">in</span> data.keys():</span><br><span class="line">            sub_images = data.get(<span class="string">&apos;sub_images&apos;</span>)</span><br><span class="line">            images = [item.get(<span class="string">&apos;url&apos;</span>) <span class="keyword">for</span> item <span class="keyword">in</span> sub_images]</span><br><span class="line">            <span class="keyword">for</span> image <span class="keyword">in</span> images: download_image(image)</span><br><span class="line">            <span class="keyword">return</span> {</span><br><span class="line">                <span class="string">&apos;title&apos;</span>: title,</span><br><span class="line">                <span class="string">&apos;url&apos;</span>: url,</span><br><span class="line">                <span class="string">&apos;images&apos;</span>: images</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x5B58;&#x50A8;&#x5230;&#x6570;&#x636E;&#x5E93;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_to_mongo</span><span class="params">(result)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> db[MONGO_TABLE].insert(result):</span><br><span class="line">        print(<span class="string">&apos;Successfully Saved to Mongo&apos;</span>, result)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(offset)</span>:</span></span><br><span class="line">    text = get_page_index(offset, KEYWORD)</span><br><span class="line">    urls = parse_page_index(text)</span><br><span class="line">    <span class="keyword">for</span> url <span class="keyword">in</span> urls:</span><br><span class="line">        html = get_page_detail(url)</span><br><span class="line">        result = parse_page_detail(html, url)</span><br><span class="line">        <span class="keyword">if</span> result: save_to_mongo(result)</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x8FD9;&#x91CC;&#x5B9A;&#x4E49;&#x4E86;&#x5206;&#x9875;&#x7684;&#x8D77;&#x59CB;&#x9875;&#x6570;&#x548C;&#x7EC8;&#x6B62;&#x9875;&#x6570;&#xFF0C;&#x5206;&#x522B;GROUP_START &#x548C; GROUP_END&#xFF0C;&#x5229;&#x7528;&#x4E86;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x7EBF;&#x7A0B;&#x6C60;&#xFF0C;&#x5E76;&#x8C03;&#x7528;#`map`&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#x591A;&#x7EBF;&#x7A0B;&#x4E0B;&#x8F7D;</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&apos;__main__&apos;</span>:</span><br><span class="line">    pool = Pool()</span><br><span class="line">    groups = ([x * <span class="number">20</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(GROUP_START, GROUP_END + <span class="number">1</span>)])</span><br><span class="line">    pool.map(main, groups)</span><br><span class="line">    pool.close()</span><br><span class="line">    pool.join()</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>config.py</li>
 </ul>
-<pre><code class="python">MONGO_URL = &apos;localhost&apos;
-MONGO_DB = &apos;toutiao&apos;
-MONGO_TABLE = &apos;toutiao&apos;
-
-GROUP_START = 1
-GROUP_END = 20
-KEYWORD=&apos;&#x8857;&#x62CD;&apos;
-</code></pre>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MONGO_URL = <span class="string">&apos;localhost&apos;</span></span><br><span class="line">MONGO_DB = <span class="string">&apos;toutiao&apos;</span></span><br><span class="line">MONGO_TABLE = <span class="string">&apos;toutiao&apos;</span></span><br><span class="line"></span><br><span class="line">GROUP_START = <span class="number">1</span></span><br><span class="line">GROUP_END = <span class="number">20</span></span><br><span class="line">KEYWORD=<span class="string">&apos;&#x8857;&#x62CD;&apos;</span></span><br></pre></td></tr></tbody></table></figure>
 <h2><span id="x53c2x8003x6587x732e">&#x53C2;&#x8003;&#x6587;&#x732E;</span></h2><p><a href="https://www.zhihu.com/question/37787004/answer/186042335" target="_blank" rel="noopener">&#x4F60;&#x6709;&#x54EA;&#x4E9B;&#x60F3;&#x8981;&#x5206;&#x4EAB;&#x7684; PyCharm &#x4F7F;&#x7528;&#x6280;&#x5DE7;&#xFF1F;</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -693,6 +561,10 @@ KEYWORD=&apos;&#x8857;&#x62CD;&apos;
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/13/LeetCode刷题总结之一/" rel="prev" title="LeetCode刷题总结之一">
+                LeetCode刷题总结之一 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -792,7 +664,7 @@ KEYWORD=&apos;&#x8857;&#x62CD;&apos;
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -803,7 +675,7 @@ KEYWORD=&apos;&#x8857;&#x62CD;&apos;
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -814,7 +686,7 @@ KEYWORD=&apos;&#x8857;&#x62CD;&apos;
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -932,13 +804,13 @@ KEYWORD=&apos;&#x8857;&#x62CD;&apos;
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共10.1k字</span>
+  <span class="post-count">博客全站共10.7k字</span>
 </div>
 
         
@@ -1015,6 +887,13 @@ KEYWORD=&apos;&#x8857;&#x62CD;&apos;
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
