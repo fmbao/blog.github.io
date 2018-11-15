@@ -114,7 +114,7 @@
 <meta property="og:site_name" content="鲍晨晨的笔记">
 <meta property="og:description" content="这是在LeetCode中文网上第一次刷题，慢慢来吧，希望坚持一段时间之后能有所收获。采用的是随机做题模式，可能序号会有些乱。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-13T07:01:52.782Z">
+<meta property="og:updated_time" content="2018-11-15T01:04:17.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode刷题总结之一">
 <meta name="twitter:description" content="这是在LeetCode中文网上第一次刷题，慢慢来吧，希望坚持一段时间之后能有所收获。采用的是随机做题模式，可能序号会有些乱。">
@@ -380,7 +380,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  533
+                  740
                 </span>
               
 
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -432,7 +432,7 @@
 <p>&#x7ED9;&#x51FA;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x6570;&#x7EC4; <code>A</code>&#xFF0C;&#x8FD4;&#x56DE;&#x6700;&#x957F; <em>&#x201C;&#x5C71;&#x8109;&#x201D;</em> &#x7684;&#x957F;&#x5EA6;&#x3002;</p>
 <p>&#x5982;&#x679C;&#x4E0D;&#x542B;&#x6709; &#x201C;<em>&#x5C71;&#x8109;&#x201D;</em> &#x5219;&#x8FD4;&#x56DE; <code>0</code>&#x3002;</p>
 <p>&#x4E8B;&#x4F8B;&#xFF1A;</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&#x8F93;&#x5165;&#xFF1A;[<span class="number">2</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>]</span><br><span class="line">&gt;&#x8F93;&#x51FA;&#xFF1A;<span class="number">5</span></span><br><span class="line">&gt;&#x89E3;&#x91CA;&#xFF1A;&#x6700;&#x957F;&#x7684;&#x5C71;&#x8109;&#x662F; [<span class="number">1</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">3</span>,<span class="number">2</span>]&#xFF0C;&#x957F;&#x5EA6;&#x65F6;<span class="number">5</span></span><br><span class="line">&gt;&#x8F93;&#x5165;&#xFF1A;[<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>]</span><br><span class="line">&gt;&#x8F93;&#x51FA;&#xFF1A;<span class="number">0</span></span><br><span class="line">&gt;&#x89E3;&#x91CA;&#xFF1A;&#x4E0D;&#x542B;&#x5C71;&#x8109;</span><br><span class="line">&gt;</span><br></pre></td></tr></tbody></table></figure>
+<p>&#x8F93;&#x5165;&#xFF1A;[2,1,4,7,3,2,5]<br>&#x8F93;&#x51FA;&#xFF1A;5<br>&#x89E3;&#x91CA;&#xFF1A;&#x6700;&#x957F;&#x7684;&#x5C71;&#x8109;&#x662F; [1,4,7,3,2]&#xFF0C;&#x957F;&#x5EA6;&#x65F6;5<br>&#x8F93;&#x5165;&#xFF1A;[2,2,2]<br>&#x8F93;&#x51FA;&#xFF1A;0<br>&#x89E3;&#x91CA;&#xFF1A;&#x4E0D;&#x542B;&#x5C71;&#x8109;</p>
 </blockquote>
 <ul>
 <li>&#x89E3;&#x9898;&#x601D;&#x8DEF;</li>
@@ -444,6 +444,26 @@
 <li>&#x4EE3;&#x7801;</li>
 </ul>
 <figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>{</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">longestMoutain</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A)</span></span>{</span><br><span class="line">        <span class="keyword">if</span>(A.size()&lt;<span class="number">3</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> left[<span class="number">100010</span>];</span><br><span class="line">        <span class="keyword">int</span> right[<span class="number">100010</span>];</span><br><span class="line">        left[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;A.size();i++){</span><br><span class="line">            <span class="keyword">if</span>(A[i]&gt;A[i<span class="number">-1</span>])</span><br><span class="line">                left[i]=left[i<span class="number">-1</span>]+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                left[i]=<span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">        right[A.size()<span class="number">-1</span>]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=A.size()<span class="number">-2</span>;i&gt;=<span class="number">0</span>;i--){</span><br><span class="line">            <span class="keyword">if</span>(A[i]&gt;A[i+<span class="number">1</span>])</span><br><span class="line">                right[i]=right[i+<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                right[i]=<span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;A.size();i++){</span><br><span class="line">            <span class="keyword">if</span>(left[i]&gt;<span class="number">0</span> &amp;&amp; right[i]&gt;<span class="number">0</span> &amp;&amp; right[i]+left[i]+<span class="number">1</span>&gt;ans)</span><br><span class="line">                ans=left[i]+right[i]+<span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<h2><span id="357-x8ba1x7b97x5404x4e2ax4f4dx6570x4e0dx540cx7684x6570x5b57x4e2ax6570-x4e2dx7b49x96bex5ea6">357. &#x8BA1;&#x7B97;&#x5404;&#x4E2A;&#x4F4D;&#x6570;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x5B57;&#x4E2A;&#x6570;- &#x4E2D;&#x7B49;&#x96BE;&#x5EA6;</span></h2><ul>
+<li>&#x9898;&#x76EE;&#x63CF;&#x8FF0;</li>
+</ul>
+<blockquote>
+<p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;<strong>&#x975E;&#x8D1F;</strong>&#x6574;&#x6570; n&#xFF0C;&#x8BA1;&#x7B97;&#x5404;&#x4F4D;&#x6570;&#x5B57;&#x90FD;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x5B57; x &#x7684;&#x4E2A;&#x6570;&#xFF0C;&#x5176;&#x4E2D; $0 &#x2264; x &lt; 10^n$ &#x3002;</p>
+<p>&#x8F93;&#x5165;&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<p>&#x8F93;&#x5165;: 2<br>&#x8F93;&#x51FA;: 91<br>&#x89E3;&#x91CA;: &#x7B54;&#x6848;&#x5E94;&#x4E3A;&#x9664;&#x53BB; 11,22,33,44,55,66,77,88,99 &#x5916;&#xFF0C;&#x5728; [0,100) &#x533A;&#x95F4;&#x5185;&#x7684;&#x6240;&#x6709;&#x6570;&#x5B57;&#x3002;</p>
+</blockquote>
+<ul>
+<li>&#x89E3;&#x9898;&#x601D;&#x8DEF;</li>
+</ul>
+<blockquote>
+<p>&#x6309;&#x7167;&#x6392;&#x5217;&#x7EC4;&#x5408;&#x7684;&#x601D;&#x8DEF;&#x8FDB;&#x884C;&#xFF0C;&#x4ECE;&#x6700;&#x5F00;&#x59CB;&#x7684;&#x4E00;&#x4F4D;&#xFF0C;&#x5230;n&#x4F4D;&#xFF0C;&#x5176;&#x5B9E;&#x8BF4;&#x767D;&#x4E86;&#xFF0C;&#x5C31;&#x662F;&#x627E;&#x89C4;&#x5F8B;&#xFF1A;1,10,10+9  <em>  9,10+9 </em>  9  *8</p>
+</blockquote>
+<ul>
+<li>&#x4EE3;&#x7801;</li>
+</ul>
+<blockquote>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&gt;{</span></span><br><span class="line">&gt;<span class="keyword">public</span>:</span><br><span class="line">&gt;	<span class="function"><span class="keyword">int</span> <span class="title">countNumerswitchUniqueDigits</span><span class="params">(<span class="keyword">int</span> n)</span> </span>{</span><br><span class="line">&gt;		<span class="keyword">int</span> res;</span><br><span class="line">&gt;		<span class="keyword">if</span> (n&lt;=<span class="number">1</span>)</span><br><span class="line">&gt;		{</span><br><span class="line">&gt;			<span class="keyword">return</span>  <span class="built_in">pow</span>(<span class="number">10</span>,n);</span><br><span class="line">&gt;		}</span><br><span class="line">&gt;		<span class="keyword">else</span></span><br><span class="line">&gt;		{</span><br><span class="line">&gt;			res = <span class="number">10</span>;</span><br><span class="line">&gt;			<span class="keyword">int</span> temp = <span class="number">9</span>;</span><br><span class="line">&gt;			<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">&gt;			{</span><br><span class="line">&gt;				temp *= (<span class="number">10</span> - i);</span><br><span class="line">&gt;				res += temp;</span><br><span class="line">&gt;				</span><br><span class="line">&gt;			}</span><br><span class="line">&gt;			<span class="keyword">return</span> res;</span><br><span class="line">&gt;		}</span><br><span class="line">&gt;	}</span><br><span class="line">&gt;</span><br><span class="line">&gt;};</span><br><span class="line">&gt;</span><br></pre></td></tr></tbody></table></figure>
+</blockquote>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -697,7 +717,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">845. 数组中最长的山脉- 中等难度</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">845. 数组中最长的山脉- 中等难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">357. 计算各个位数不同的数字个数- 中等难度</span></a></li></ol></div>
             
 
           </div>
@@ -748,7 +768,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共10.7k字</span>
+  <span class="post-count">博客全站共10.9k字</span>
 </div>
 
         
