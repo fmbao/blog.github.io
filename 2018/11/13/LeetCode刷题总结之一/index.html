@@ -114,7 +114,7 @@
 <meta property="og:site_name" content="鲍晨晨的笔记">
 <meta property="og:description" content="这是在LeetCode中文网上第一次刷题，慢慢来吧，希望坚持一段时间之后能有所收获。采用的是随机做题模式，可能序号会有些乱。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-15T01:10:20.063Z">
+<meta property="og:updated_time" content="2018-11-20T13:24:54.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode刷题总结之一">
 <meta name="twitter:description" content="这是在LeetCode中文网上第一次刷题，慢慢来吧，希望坚持一段时间之后能有所收获。采用的是随机做题模式，可能序号会有些乱。">
@@ -380,7 +380,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  733
+                  1.2k
                 </span>
               
 
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  4
+                  7
                 </span>
               
             </div>
@@ -464,6 +464,28 @@
 <blockquote>
 <figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>{</span></span><br><span class="line">&gt;    <span class="keyword">public</span>:</span><br><span class="line">&gt;    <span class="function"><span class="keyword">int</span> <span class="title">countNumberswitchUniqueDigits</span><span class="params">(<span class="keyword">int</span> n)</span></span>{</span><br><span class="line">&gt;        <span class="keyword">int</span> res;</span><br><span class="line">&gt;        <span class="keyword">if</span>(n&lt;=<span class="number">1</span>){</span><br><span class="line">&gt;            <span class="keyword">return</span> <span class="built_in">pow</span>(<span class="number">10</span>,n);</span><br><span class="line">&gt;        }<span class="keyword">else</span>{</span><br><span class="line">&gt;            res=<span class="number">10</span>;</span><br><span class="line">&gt;            <span class="keyword">int</span> temp=<span class="number">9</span>;</span><br><span class="line">&gt;            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">&gt;            {</span><br><span class="line">&gt;                temp*=(<span class="number">10</span>-i);</span><br><span class="line">&gt;                res +=temp;</span><br><span class="line">&gt;            }</span><br><span class="line">&gt;            <span class="keyword">return</span> </span><br><span class="line">&gt;        }</span><br><span class="line">&gt;    }</span><br><span class="line">&gt;};</span><br><span class="line">&gt;</span><br></pre></td></tr></tbody></table></figure>
 </blockquote>
+<h2><span id="390-x6d88x9664x6e38x620f-x4e2dx7b49x96bex5ea6">390. &#x6D88;&#x9664;&#x6E38;&#x620F;- &#x4E2D;&#x7B49;&#x96BE;&#x5EA6;</span></h2><ul>
+<li>&#x9898;&#x76EE;&#x63CF;&#x8FF0;</li>
+</ul>
+<blockquote>
+<p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x4ECE;1 &#x5230; n &#x6392;&#x5E8F;&#x7684;&#x6574;&#x6570;&#x5217;&#x8868;&#x3002;<br>&#x9996;&#x5148;&#xFF0C;&#x4ECE;&#x5DE6;&#x5230;&#x53F3;&#xFF0C;&#x4ECE;&#x7B2C;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x5F00;&#x59CB;&#xFF0C;&#x6BCF;&#x9694;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x8FDB;&#x884C;&#x5220;&#x9664;&#xFF0C;&#x76F4;&#x5230;&#x5217;&#x8868;&#x7684;&#x672B;&#x5C3E;&#x3002;<br>&#x7B2C;&#x4E8C;&#x6B65;&#xFF0C;&#x5728;&#x5269;&#x4E0B;&#x7684;&#x6570;&#x5B57;&#x4E2D;&#xFF0C;&#x4ECE;&#x53F3;&#x5230;&#x5DE6;&#xFF0C;&#x4ECE;&#x5012;&#x6570;&#x7B2C;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x5F00;&#x59CB;&#xFF0C;&#x6BCF;&#x9694;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x8FDB;&#x884C;&#x5220;&#x9664;&#xFF0C;&#x76F4;&#x5230;&#x5217;&#x8868;&#x5F00;&#x5934;&#x3002;<br>&#x6211;&#x4EEC;&#x4E0D;&#x65AD;&#x91CD;&#x590D;&#x8FD9;&#x4E24;&#x6B65;&#xFF0C;&#x4ECE;&#x5DE6;&#x5230;&#x53F3;&#x548C;&#x4ECE;&#x53F3;&#x5230;&#x5DE6;&#x4EA4;&#x66FF;&#x8FDB;&#x884C;&#xFF0C;&#x76F4;&#x5230;&#x53EA;&#x5269;&#x4E0B;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x3002;<br>&#x8FD4;&#x56DE;&#x957F;&#x5EA6;&#x4E3A; n &#x7684;&#x5217;&#x8868;&#x4E2D;&#xFF0C;&#x6700;&#x540E;&#x5269;&#x4E0B;&#x7684;&#x6570;&#x5B57;&#x3002;</p>
+<p>&#x4E8B;&#x4F8B;&#xFF1A;</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&#x8F93;&#x5165;</span><br><span class="line">&gt;n=<span class="number">9</span></span><br><span class="line">&gt;<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span></span><br><span class="line">&gt;<span class="number">2</span> <span class="number">4</span> <span class="number">6</span> <span class="number">8</span></span><br><span class="line">&gt;<span class="number">2</span> <span class="number">6</span></span><br><span class="line">&gt;<span class="number">6</span></span><br><span class="line">&gt;&#x8F93;&#x51FA;</span><br><span class="line">&gt;<span class="number">6</span></span><br><span class="line">&gt;</span><br></pre></td></tr></tbody></table></figure>
+</blockquote>
+<ul>
+<li>&#x89E3;&#x9898;&#x601D;&#x8DEF;</li>
+</ul>
+<blockquote>
+<p>&#x5176;&#x5B9E;&#x8FD9;&#x4E2A;&#x9898;&#x76EE;&#x9700;&#x8981;&#x89E3;&#x51B3;&#x7684;&#x8BDD;&#xFF0C;&#x601D;&#x8DEF;&#x53EF;&#x4EE5;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x5C31;&#x662F;&#x7528;for&#x5FAA;&#x73AF;&#x6765;&#x6765;&#x56DE;&#x56DE;&#x5220;&#x9664;&#xFF0C;&#x91C7;&#x7528;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x53EF;&#x4EE5;&#x662F;&#x94FE;&#x8868;&#x6216;&#x8005;&#x5176;&#x4ED6;&#x6BD4;&#x8F83;&#x5BB9;&#x6613;&#x5220;&#x9664;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;&#x4F46;&#x662F;&#x5F53;&#x6570;&#x636E;&#x91CF;&#x6BD4;&#x8F83;&#x5927;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4E0D;&#x5B9E;&#x7528;&#x4E86;&#x3002;</p>
+<p>&#x5F53;&#x7136;&#x8FD9;&#x4E2A;&#x9898;&#x76EE;&#x8FD8;&#x662F;&#x5F88;&#x89C4;&#x6574;&#xFF0C;&#x5F88;&#x6709;&#x89C4;&#x5F8B;&#x7684;&#xFF0C;&#x6211;&#x770B;&#x4E86;&#x4E00;&#x773C;&#xFF0C;&#x77E5;&#x9053;&#x4E0D;&#x662F;&#x7528;&#x8FD9;&#x79CD;&#x66B4;&#x529B;&#x7684;&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#xFF0C;&#x80AF;&#x5B9A;&#x4F7F;&#x7528;&#x6BD4;&#x8F83;&#x6709;&#x6280;&#x5DE7;&#x7684;&#x6570;&#x5B66;&#x516C;&#x5F0F;&#x6765;&#x89E3;&#x51B3;&#xFF0C;&#x4F46;&#x662F;&#x60F3;&#x4E86;&#x633A;&#x4E45;&#x6CA1;&#x6709;&#x627E;&#x5230;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x5408;&#x9002;&#x7684;&#x6570;&#x636E;&#x516C;&#x5F0F;&#x6765;&#x89E3;&#x51B3;&#x3002;</p>
+<p>&#x6700;&#x7EC8;&#x8FD8;&#x662F;&#x770B;&#x4E86;&#x7B54;&#x6848;&#xFF0C;&#x5E76;&#x4E14;<a href="https://blog.csdn.net/afei__/article/details/83689502#commentBox" target="_blank" rel="noopener">&#x770B;&#x4E86;&#x6700;&#x540E;&#x725B;&#x903C;&#x7684;&#x8BC1;&#x660E;</a>&#xFF0C;&#x611F;&#x89C9;&#x4E5F;&#x4E0D;&#x662F;&#x5F88;&#x96BE;&#xFF0C;&#x9AD8;&#x4E2D;&#x6570;&#x5217;&#x9898;&#x7684;&#x6C34;&#x5E73;&#x3002;&#x4F46;&#x662F;&#x60F3;&#x5728;&#x77ED;&#x65F6;&#x95F4;&#x4E4B;&#x5185;&#x505A;&#x51FA;&#x6765;&#x4E5F;&#x4E0D;&#x5BB9;&#x6613;&#x3002;</p>
+</blockquote>
+<ul>
+<li>&#x4EE3;&#x7801;</li>
+</ul>
+<blockquote>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt;Class Solution{</span><br><span class="line">&gt;    <span class="keyword">public</span>:</span><br><span class="line">&gt;    <span class="function"><span class="keyword">int</span> <span class="title">lastRemaining</span><span class="params">(<span class="keyword">int</span> n)</span></span>{</span><br><span class="line">&gt;        <span class="keyword">if</span>(n==<span class="number">1</span>){</span><br><span class="line">&gt;            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&gt;        }<span class="keyword">else</span>{</span><br><span class="line">&gt;            <span class="comment">/*</span></span><br><span class="line"><span class="comment">&gt;            &#x5355;&#x7EAF;&#x4ECE;&#x5DE6;&#x5411;&#x53F3;&#x5254;&#x9664;&#x6570;&#x5B57;&#x7684;&#x7ED3;&#x679C;&#xFF1A;f(n)  &#x5355;&#x7EAF;&#x4ECE;&#x53F3;&#x5411;&#x5DE6;&#x5254;&#x9664;&#x6570;&#x5B57; b(n)</span></span><br><span class="line"><span class="comment">&gt;            f(n)+b(n)=n+1    f(n)=2*b(n/2)</span></span><br><span class="line"><span class="comment">&gt;            f(n)=2*b(n/2)=2*(n/2+1-f(n/2))</span></span><br><span class="line"><span class="comment">&gt;            */</span></span><br><span class="line">&gt;            <span class="keyword">return</span> <span class="number">2</span>*(n/<span class="number">2</span>+<span class="number">1</span>-lastRemaining(n/<span class="number">2</span>));</span><br><span class="line">&gt;        }</span><br><span class="line">&gt;    }</span><br><span class="line">&gt;};</span><br><span class="line">&gt;</span><br></pre></td></tr></tbody></table></figure>
+</blockquote>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -523,6 +545,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/17/【论文阅读】GAN模型的搭建以及运行/" rel="prev" title="【论文阅读】GAN模型的搭建以及运行">
+                【论文阅读】GAN模型的搭建以及运行 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -622,7 +648,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -644,7 +670,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -717,7 +743,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">845. 数组中最长的山脉- 中等难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">357. 计算各个位数不同的数字个数- 中等难度</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">845. 数组中最长的山脉- 中等难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">357. 计算各个位数不同的数字个数- 中等难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">390. 消除游戏- 中等难度</span></a></li></ol></div>
             
 
           </div>
@@ -768,7 +794,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共10.9k字</span>
+  <span class="post-count">博客全站共12.6k字</span>
 </div>
 
         
