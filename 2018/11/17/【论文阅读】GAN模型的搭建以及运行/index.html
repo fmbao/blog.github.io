@@ -90,7 +90,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="GAN模型,代码调试," />
+  <meta name="keywords" content="GAN模型,代码调试,Linux常识," />
 
 
 
@@ -107,7 +107,7 @@
 
 
 <meta name="description" content="最近在工作站上安装了pycharm，anaconda和pytorch。算是把基本准备工作完成了，然后需要开始做的是将github上一些BEGAN模型的程序跑起来。然后根据手头的图片改一些代码参数。">
-<meta name="keywords" content="GAN模型,代码调试">
+<meta name="keywords" content="GAN模型,代码调试,Linux常识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【论文阅读】GAN模型的搭建以及运行">
 <meta property="og:url" content="http://yoursite.com/2018/11/17/【论文阅读】GAN模型的搭建以及运行/index.html">
@@ -115,7 +115,7 @@
 <meta property="og:description" content="最近在工作站上安装了pycharm，anaconda和pytorch。算是把基本准备工作完成了，然后需要开始做的是将github上一些BEGAN模型的程序跑起来。然后根据手头的图片改一些代码参数。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/11/17/【论文阅读】GAN模型的搭建以及运行/1.png">
-<meta property="og:updated_time" content="2018-11-21T13:04:17.282Z">
+<meta property="og:updated_time" content="2018-11-26T01:31:50.618Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【论文阅读】GAN模型的搭建以及运行">
 <meta name="twitter:description" content="最近在工作站上安装了pycharm，anaconda和pytorch。算是把基本准备工作完成了，然后需要开始做的是将github上一些BEGAN模型的程序跑起来。然后根据手头的图片改一些代码参数。">
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1.4k
+                  1.6k
                 </span>
               
 
@@ -476,6 +476,21 @@
 <h3><span id="pytorchx5b89x88c5x7684x6ce8x610fx70b9">pytorch&#x5B89;&#x88C5;&#x7684;&#x6CE8;&#x610F;&#x70B9;</span></h3><p>&#x54CE;&#xFF0C;&#x4ECA;&#x5929;&#x50BB;&#x903C;&#x4E86;&#xFF0C;&#x4E4B;&#x524D;&#x7684;BEGAN&#x4E00;&#x76F4;&#x6CA1;&#x8C03;&#x901A;&#xFF0C;&#x540E;&#x6765;&#x60F3;&#x60F3;&#x7B97;&#x4E86;&#xFF0C;&#x5148;&#x7528;&#x4E4B;&#x524D;&#x8DD1;&#x901A;&#x7684;WGAN&#x5427;&#xFF0C;&#x7136;&#x540E;&#x62FF;&#x8FC7;&#x6765;&#x653E;&#x5728;&#x5DE5;&#x4F5C;&#x7AD9;&#x4E0A;&#x8DD1;&#xFF0C;md&#xFF0C;&#x7ED3;&#x679C;&#x600E;&#x4E48;&#x90FD;&#x8DD1;&#x4E0D;&#x901A;&#xFF0C;&#x603B;&#x63D0;&#x793A;<code>torch.FloatTensor object has no attribute shape</code>&#x5C31;&#x662F;&#x8BF4;&#x6CA1;&#x6709;shape&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x3002;&#x6211;&#x5C31;&#x7EB3;&#x4E86;&#x95F7;&#x4E86;&#xFF0C;&#x5728;pycharm&#x4E0A;&#x4E5F;&#x4E0D;&#x62A5;&#x9519;&#xFF0C;&#x8DD1;&#x5230;&#x8FD9;&#x6BB5;&#x7A0B;&#x5E8F;&#x5C31;&#x62A5;&#x9519;&#xFF0C;&#x4E00;&#x8138;&#x8499;&#x853D;&#x3002;&#x600E;&#x4E48;&#x90FD;&#x60F3;&#x4E0D;&#x901A;&#x3002;&#x665A;&#x4E0A;&#x8FC7;&#x6765;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x91CC;&#x9762;&#x6572;&#x8FDB;<code>import pytorch</code>&#x7ED3;&#x679C;&#x63D0;&#x793A;&#x6CA1;&#x6709;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#xFF0C;&#x6211;&#x6EF4;&#x4E2A;&#x4E56;&#x4E56;&#xFF0C;&#x539F;&#x6765;&#x6211;&#x538B;&#x6839;&#x6CA1;&#x5B89;&#x88C5;pytorch&#x8FD9;&#x4E2A;&#x6846;&#x67B6;&#x3002;&#x5F97;&#xFF0C;&#x88C5;&#x5427;&#x3002;</p>
 <p>&#x5B89;&#x88C5;pytorch&#xFF0C;&#x8FD8;&#x662F;&#x6BD4;&#x8F83;&#x65B9;&#x4FBF;&#x7684;&#x3002;&#x5C31;&#x662F;&#x5148;&#x5230;<a href="https://pytorch.org/" target="_blank" rel="noopener">pytorch&#x7684;&#x5B98;&#x7F51;</a>&#x4E0A;&#xFF0C;&#x6309;&#x7167;&#x81EA;&#x5DF1;&#x7535;&#x8111;&#x7684;&#x73AF;&#x5883;&#x9009;&#x62E9;&#x5408;&#x9002;&#x7684;&#x5B89;&#x88C5;&#x547D;&#x4EE4;&#x3002;</p>
 <img src="/2018/11/17/&#x3010;&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x3011;GAN&#x6A21;&#x578B;&#x7684;&#x642D;&#x5EFA;&#x4EE5;&#x53CA;&#x8FD0;&#x884C;/1.png" title="&#x5B89;&#x88C5;&#x547D;&#x4EE4;">
+<h3><span id="linuxx8defx5f84x603bx7ed3">Linux&#x8DEF;&#x5F84;&#x603B;&#x7ED3;</span></h3><ol>
+<li><p>Linux&#x4E2D;&#xFF1A;</p>
+<ul>
+<li><code>.</code> &#x8868;&#x793A;&#x5F53;&#x524D;&#x76EE;&#x5F55;</li>
+<li><code>..</code> &#x8868;&#x793A;&#x4E0A;&#x4E00;&#x7EA7;&#x76EE;&#x5F55;</li>
+<li><code>-</code> &#x8868;&#x793A;&#x4E0A;&#x6B21;&#x6240;&#x5728;&#x76EE;&#x5F55;</li>
+<li><code>~</code> &#x8868;&#x793A;&#x5F53;&#x524D;&#x7528;&#x6237;&#x7684;<code>home</code>&#x76EE;&#x5F55;</li>
+<li><p>&#x4F7F;&#x7528;<code>pwd</code>&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x6240;&#x5728;&#x8DEF;&#x5F84;&#xFF08;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#xFF09;</p>
+</li>
+<li><p>&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x5C31;&#x662F;&#x4EE5;&#x6839;<code>/</code>&#x76EE;&#x5F55;&#x4E3A;&#x8D77;&#x70B9;&#xFF0C;&#x4EE5;&#x4F60;&#x6240;&#x5230;&#x8FBE;&#x7684;&#x76EE;&#x5F55;&#x4E3A;&#x7EC8;&#x70B9;&#xFF0C;&#x8868;&#x73B0;&#x5F62;&#x5F0F;&#x4E3A;<code>/usr/local/bin</code></p>
+</li>
+<li>&#x8FDB;&#x5165;&#x54EA;&#x4E2A;&#x76EE;&#x5F55;&#x53D6;&#x51B3;&#x4E8E;&#x54EA;&#x4E2A;&#x66F4;&#x65B9;&#x4FBF;&#xFF0C;&#x6BD4;&#x5982;&#x5F53;&#x524D;&#x5728;<code>/usr/local/bin</code>&#x4E0B;&#xFF0C;&#x8981;&#x8FDB;&#x5165;&#x4E0A;&#x4E00;&#x7EA7;&#x76EE;&#x5F55;&#x5F53;&#x7136;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>cd ..</code>&#xFF0C;&#x8FD9;&#x5C31;&#x6BD4;&#x4F7F;&#x7528;<code>cd /usr/local</code>&#x65B9;&#x4FBF;&#x3002;</li>
+</ul>
+</li>
+</ol>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -514,6 +529,8 @@
             <a href="/tags/GAN模型/" rel="tag"><i class="fa fa-tag"></i> GAN模型</a>
           
             <a href="/tags/代码调试/" rel="tag"><i class="fa fa-tag"></i> 代码调试</a>
+          
+            <a href="/tags/Linux常识/" rel="tag"><i class="fa fa-tag"></i> Linux常识</a>
           
         </div>
       
@@ -660,7 +677,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -733,7 +750,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">遇到的一些奇怪问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-text">pytorch中.pth文件的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-text">Python直接输入到文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-text">pycharm进行python调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-text">TensorFlow的data_format：NHWC、NCHW的区别与转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-text">Utils文件的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-text">pytorch安装的注意点</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">遇到的一些奇怪问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-text">pytorch中.pth文件的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-text">Python直接输入到文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-text">pycharm进行python调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-text">TensorFlow的data_format：NHWC、NCHW的区别与转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-text">Utils文件的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-text">pytorch安装的注意点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-text">Linux路径总结</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -784,7 +801,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共16.5k字</span>
+  <span class="post-count">博客全站共17.5k字</span>
 </div>
 
         
