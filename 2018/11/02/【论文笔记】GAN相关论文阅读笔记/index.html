@@ -128,7 +128,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":true,"scrollpercent":true,"onmobile":true},
     fancybox: true,
     tabs: true,
     motion: true,
@@ -427,7 +427,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://ask.qcloudimg.com/http-save/yehe-1565119/czwhuw5w22.jpeg?imageView2/2/w/1620" rel="gallery_cjp3b9u010008e0v3zim3us0g"
+                 href="https://ask.qcloudimg.com/http-save/yehe-1565119/czwhuw5w22.jpeg?imageView2/2/w/1620" rel="gallery_cjp3bwkjk0006osv3xjs0494s"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://ask.qcloudimg.com/http-save/yehe-1565119/czwhuw5w22.jpeg?imageView2/2/w/1620" itemprop="contentUrl"/>
               </a>
@@ -706,6 +706,8 @@
 
   <aside id="sidebar" class="sidebar">
     
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
@@ -840,6 +842,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -911,11 +920,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
   </div>
