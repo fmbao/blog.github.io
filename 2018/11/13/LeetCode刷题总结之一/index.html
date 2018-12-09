@@ -114,7 +114,7 @@
 <meta property="og:site_name" content="鲍晨晨的笔记">
 <meta property="og:description" content="这是在LeetCode中文网上第一次刷题，慢慢来吧，希望坚持一段时间之后能有所收获。采用的是随机做题模式，可能序号会有些乱。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-29T14:00:48.393Z">
+<meta property="og:updated_time" content="2018-12-06T14:11:41.396Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode刷题总结之一">
 <meta name="twitter:description" content="这是在LeetCode中文网上第一次刷题，慢慢来吧，希望坚持一段时间之后能有所收获。采用的是随机做题模式，可能序号会有些乱。">
@@ -385,7 +385,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  4.6k 字
+                  6.2k 字
                 </span>
               
 
@@ -401,7 +401,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  28 分钟
+                  38 分钟
                 </span>
               
             </div>
@@ -595,7 +595,7 @@
 </blockquote>
 <blockquote>
 </blockquote>
-<h2><span id="522-x6700x957fx7279x6b8ax5e8fx5217-ii">522. &#x6700;&#x957F;&#x7279;&#x6B8A;&#x5E8F;&#x5217; II</span></h2><ul>
+<h2><span id="522-x6700x957fx7279x6b8ax5e8fx5217-ii-x4e2dx7b49x96bex5ea6">522. &#x6700;&#x957F;&#x7279;&#x6B8A;&#x5E8F;&#x5217; II -&#x4E2D;&#x7B49;&#x96BE;&#x5EA6;</span></h2><ul>
 <li>&#x9898;&#x76EE;&#x63CF;&#x8FF0;</li>
 </ul>
 <blockquote>
@@ -630,7 +630,7 @@
 </blockquote>
 <blockquote>
 </blockquote>
-<h2><span id="95-x4e0dx540cx7684x4e8cx53c9x641cx7d22x6811-ii">95. &#x4E0D;&#x540C;&#x7684;&#x4E8C;&#x53C9;&#x641C;&#x7D22;&#x6811; II</span></h2><ul>
+<h2><span id="95-x4e0dx540cx7684x4e8cx53c9x641cx7d22x6811-ii-x4e2dx7b49x96bex5ea6">95. &#x4E0D;&#x540C;&#x7684;&#x4E8C;&#x53C9;&#x641C;&#x7D22;&#x6811; II- &#x4E2D;&#x7B49;&#x96BE;&#x5EA6;</span></h2><ul>
 <li>&#x9898;&#x76EE;&#x63CF;&#x8FF0;</li>
 </ul>
 <blockquote>
@@ -650,6 +650,111 @@
 </ul>
 <blockquote>
 <figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span>{</span></span><br><span class="line">&gt;    <span class="keyword">int</span> val;</span><br><span class="line">&gt;    TreeNode * left;</span><br><span class="line">&gt;    TreeNode * right;</span><br><span class="line">&gt;    TreeNode(<span class="keyword">int</span> x):val(x),left(<span class="literal">NULL</span>),right(<span class="literal">NULL</span>){}</span><br><span class="line">&gt;};</span><br><span class="line">&gt;<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>{</span></span><br><span class="line">&gt;    <span class="keyword">public</span>:</span><br><span class="line">&gt;    <span class="built_in">vector</span>&lt;TreeNode *&gt;createTrees(<span class="keyword">int</span> start,<span class="keyword">int</span> end){</span><br><span class="line">&gt;        <span class="built_in">vector</span>&lt;TreeNode* &gt;res;</span><br><span class="line">&gt;        <span class="keyword">if</span>(start&gt;end)</span><br><span class="line">&gt;        {</span><br><span class="line">&gt;            res.push_back(<span class="literal">NULL</span>);</span><br><span class="line">&gt;            <span class="keyword">return</span> res;</span><br><span class="line">&gt;        }</span><br><span class="line">&gt;        <span class="keyword">if</span>(start== end){</span><br><span class="line">&gt;            TreeNode * root = <span class="keyword">new</span> TreeNode(start);</span><br><span class="line">&gt;            res.push_back(root);</span><br><span class="line">&gt;            <span class="keyword">return</span> res;</span><br><span class="line">&gt;        }</span><br><span class="line">&gt;        <span class="keyword">for</span>(<span class="keyword">int</span> i=start;i&lt;=end;i++){</span><br><span class="line">&gt;            <span class="built_in">vector</span>&lt;TreeNode* &gt;left= createTrees(start,i<span class="number">-1</span>);</span><br><span class="line">&gt;            <span class="built_in">vector</span>&lt;TreeNode* &gt;right= createTrees(i+<span class="number">1</span>,end);</span><br><span class="line">&gt;            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;left.size();++j){</span><br><span class="line">&gt;                <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;right.size();++k){</span><br><span class="line">&gt;                    TreeNode *root = <span class="keyword">new</span> TreeNode(i);</span><br><span class="line">&gt;                    root-&gt;left= left[j];</span><br><span class="line">&gt;                    root-&gt;right= right[k];</span><br><span class="line">&gt;                    res.push_back(root);</span><br><span class="line">&gt;                }</span><br><span class="line">&gt;            }</span><br><span class="line">&gt;            </span><br><span class="line">&gt;        }</span><br><span class="line">&gt;        <span class="keyword">return</span> res;</span><br><span class="line">&gt;    }</span><br><span class="line">&gt;    <span class="built_in">vector</span>&lt;TreeNode *&gt; generateTrees(<span class="keyword">int</span> n){</span><br><span class="line">&gt;        <span class="keyword">if</span>(n&lt;<span class="number">1</span>)</span><br><span class="line">&gt;            <span class="keyword">return</span> (<span class="built_in">vector</span>&lt;TreeNode *&gt;)<span class="literal">NULL</span>;</span><br><span class="line">&gt;        <span class="keyword">return</span> createTrees(<span class="number">1</span>,n);</span><br><span class="line">&gt;    }</span><br><span class="line">&gt;};</span><br><span class="line">&gt;</span><br></pre></td></tr></tbody></table></figure>
+</blockquote>
+<blockquote>
+</blockquote>
+<h2><span id="330-x6309x8981x6c42x8865x9f50x6570x7ec4-x56f0x96be">330 . &#x6309;&#x8981;&#x6C42;&#x8865;&#x9F50;&#x6570;&#x7EC4; -&#x56F0;&#x96BE;</span></h2><ul>
+<li>&#x9898;&#x76EE;&#x63CF;&#x8FF0;</li>
+</ul>
+<blockquote>
+<p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x5DF2;&#x6392;&#x5E8F;&#x7684;&#x6B63;&#x6574;&#x6570;&#x6570;&#x7EC4; <em>nums&#xFF0C;</em>&#x548C;&#x4E00;&#x4E2A;&#x6B63;&#x6574;&#x6570; <em>n &#x3002;</em>&#x4ECE; <code>[1, n]</code> &#x533A;&#x95F4;&#x5185;&#x9009;&#x53D6;&#x4EFB;&#x610F;&#x4E2A;&#x6570;&#x5B57;&#x8865;&#x5145;&#x5230; <em>nums</em> &#x4E2D;&#xFF0C;&#x4F7F;&#x5F97; <code>[1, n]</code> &#x533A;&#x95F4;&#x5185;&#x7684;&#x4EFB;&#x4F55;&#x6570;&#x5B57;&#x90FD;&#x53EF;&#x4EE5;&#x7528; <em>nums</em> &#x4E2D;&#x67D0;&#x51E0;&#x4E2A;&#x6570;&#x5B57;&#x7684;&#x548C;&#x6765;&#x8868;&#x793A;&#x3002;&#x8BF7;&#x8F93;&#x51FA;&#x6EE1;&#x8DB3;&#x4E0A;&#x8FF0;&#x8981;&#x6C42;&#x7684;&#x6700;&#x5C11;&#x9700;&#x8981;&#x8865;&#x5145;&#x7684;&#x6570;&#x5B57;&#x4E2A;&#x6570;&#x3002;</p>
+<p>&#x4E8B;&#x4F8B;&#xFF1A;</p>
+<p>&#x8F93;&#x5165;: nums = [1,3], n = 6<br>&#x8F93;&#x51FA;: 1<br>&#x89E3;&#x91CA;:<br>&#x6839;&#x636E; nums &#x91CC;&#x73B0;&#x6709;&#x7684;&#x7EC4;&#x5408; [1], [3], [1,3]&#xFF0C;&#x53EF;&#x4EE5;&#x5F97;&#x51FA; 1, 3, 4&#x3002;<br>&#x73B0;&#x5728;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5C06; 2 &#x6DFB;&#x52A0;&#x5230; nums &#x4E2D;&#xFF0C; &#x7EC4;&#x5408;&#x53D8;&#x4E3A;: [1], [2], [3], [1,3], [2,3], [1,2,3]&#x3002;<br>&#x5176;&#x548C;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x6570;&#x5B57; 1, 2, 3, 4, 5, 6&#xFF0C;&#x80FD;&#x591F;&#x8986;&#x76D6; [1, 6] &#x533A;&#x95F4;&#x91CC;&#x6240;&#x6709;&#x7684;&#x6570;&#x3002;<br>&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x6700;&#x5C11;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x3002;</p>
+</blockquote>
+<ul>
+<li>&#x89E3;&#x9898;&#x601D;&#x8DEF;</li>
+</ul>
+<blockquote>
+<p>&#x8FD9;&#x9053;&#x9898;&#xFF0C;&#x6709;&#x4E9B;&#x61F5;&#x903C;&#xFF0C;&#x4E3B;&#x8981;&#x7684;&#x60F3;&#x6CD5;&#x5C31;&#x662F;&#x8D2A;&#x5FC3;&#x7B97;&#x6CD5;&#xFF0C;&#x4ECE;&#x4E24;&#x4E2A;&#x65B9;&#x9762;&#x53BB;&#x52A0;&#x548C;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;<code>nums[i]</code>,&#x4E00;&#x4E2A;&#x662F;<code>1-n</code>&#x7684;&#x6570;&#x5B57;&#x8FDB;&#x884C;&#x52A0;&#x548C;&#xFF0C;&#x7136;&#x540E;&#x53EA;&#x8981;&#x63D0;&#x4F9B;&#x4E00;&#x6B21;<code>1-n</code>&#x7684;&#x6570;&#x5B57;&#xFF0C;&#x5C31;&#x7EDF;&#x8BA1;&#x4E00;&#x6B21;&#x9700;&#x8981;&#x8865;&#x5145;&#x7684;&#x6570;&#x5B57;&#x3002;</p>
+</blockquote>
+<ul>
+<li>&#x4EE3;&#x7801;</li>
+</ul>
+<blockquote>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>{</span></span><br><span class="line">&gt;    <span class="keyword">public</span>:</span><br><span class="line">&gt;    <span class="function"><span class="keyword">int</span> <span class="title">minPatchess</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> n)</span></span>{</span><br><span class="line">&gt;        <span class="keyword">int</span> i=<span class="number">0</span>,count=<span class="number">0</span>;</span><br><span class="line">&gt;        <span class="keyword">long</span> <span class="keyword">long</span> maxsum=<span class="number">0</span>;</span><br><span class="line">&gt;        <span class="keyword">while</span>(maxsum&lt;n){</span><br><span class="line">&gt;            <span class="keyword">if</span>(i&lt;nums.size()  &amp;&amp;  nums[i]&lt;maxsum+<span class="number">1</span>){</span><br><span class="line">&gt;                maxsum=maxsum+nums[i];</span><br><span class="line">&gt;                i++;</span><br><span class="line">&gt;            }<span class="keyword">else</span>{</span><br><span class="line">&gt;                maxsum+=(maxsum+<span class="number">1</span>);</span><br><span class="line">&gt;                count++;</span><br><span class="line">&gt;            }</span><br><span class="line">&gt;        }</span><br><span class="line">&gt;        <span class="keyword">return</span> count;</span><br><span class="line">&gt;    }</span><br><span class="line">&gt;};</span><br><span class="line">&gt;</span><br></pre></td></tr></tbody></table></figure>
+</blockquote>
+<blockquote>
+</blockquote>
+<h2><span id="331-x9a8cx8bc1x4e8cx53c9x6811x7684x524dx5e8fx5e8fx5217x5316-x4e2dx7b49">331. &#x9A8C;&#x8BC1;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x524D;&#x5E8F;&#x5E8F;&#x5217;&#x5316; - &#x4E2D;&#x7B49;</span></h2><ul>
+<li>&#x9898;&#x76EE;&#x63CF;&#x8FF0;</li>
+</ul>
+<blockquote>
+<p>&#x5E8F;&#x5217;&#x5316;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x662F;&#x4F7F;&#x7528;&#x524D;&#x5E8F;&#x904D;&#x5386;&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x9047;&#x5230;&#x4E00;&#x4E2A;&#x975E;&#x7A7A;&#x8282;&#x70B9;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BB0;&#x5F55;&#x4E0B;&#x8FD9;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x503C;&#x3002;&#x5982;&#x679C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x7A7A;&#x8282;&#x70B9;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x6807;&#x8BB0;&#x503C;&#x8BB0;&#x5F55;&#xFF0C;&#x4F8B;&#x5982; <code>#</code>&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x4E0A;&#x9762;&#x7684;&#x4E8C;&#x53C9;&#x6811;&#x53EF;&#x4EE5;&#x88AB;&#x5E8F;&#x5217;&#x5316;&#x4E3A;&#x5B57;&#x7B26;&#x4E32; <code>&quot;9,3,4,#,#,1,#,#,2,#,6,#,#&quot;</code>&#xFF0C;&#x5176;&#x4E2D; <code>#</code> &#x4EE3;&#x8868;&#x4E00;&#x4E2A;&#x7A7A;&#x8282;&#x70B9;&#x3002;</p>
+<p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E32;&#x4EE5;&#x9017;&#x53F7;&#x5206;&#x9694;&#x7684;&#x5E8F;&#x5217;&#xFF0C;&#x9A8C;&#x8BC1;&#x5B83;&#x662F;&#x5426;&#x662F;&#x6B63;&#x786E;&#x7684;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x524D;&#x5E8F;&#x5E8F;&#x5217;&#x5316;&#x3002;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x5728;&#x4E0D;&#x91CD;&#x6784;&#x6811;&#x7684;&#x6761;&#x4EF6;&#x4E0B;&#x7684;&#x53EF;&#x884C;&#x7B97;&#x6CD5;&#x3002;</p>
+<p>&#x6BCF;&#x4E2A;&#x4EE5;&#x9017;&#x53F7;&#x5206;&#x9694;&#x7684;&#x5B57;&#x7B26;&#x6216;&#x4E3A;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x6216;&#x4E3A;&#x4E00;&#x4E2A;&#x8868;&#x793A; <code>null</code> &#x6307;&#x9488;&#x7684; <code>&apos;#&apos;</code> &#x3002;</p>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x8F93;&#x5165;&#x683C;&#x5F0F;&#x603B;&#x662F;&#x6709;&#x6548;&#x7684;&#xFF0C;&#x4F8B;&#x5982;&#x5B83;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x5305;&#x542B;&#x4E24;&#x4E2A;&#x8FDE;&#x7EED;&#x7684;&#x9017;&#x53F7;&#xFF0C;&#x6BD4;&#x5982; <code>&quot;1,,3&quot;</code> &#x3002;</p>
+<p>&#x4E8B;&#x4F8B;&#xFF1A;</p>
+<p>&#x8F93;&#x5165;: &#x201C;9,3,4,#,#,1,#,#,2,#,6,#,#&#x201D;<br>&#x8F93;&#x51FA;: true</p>
+</blockquote>
+<ul>
+<li>&#x89E3;&#x9898;&#x601D;&#x8DEF;</li>
+</ul>
+<blockquote>
+<ol>
+<li><p>&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x6808;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x56E0;&#x4E3A;&#x641C;&#x7D22;&#x4E8C;&#x53C9;&#x6811;&#xFF0C;&#x662F;&#x53F3;&#x5B50;&#x6811;&#x5927;&#x4E8E;&#x6839;&#x5927;&#x4E8E;&#x5DE6;&#x5B50;&#x6811;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x56E0;&#x6B64;&#x628A;&#x6570;&#x7EC4;&#x8FDB;&#x884C;&#x538B;&#x6808;&#xFF0C;&#x5C06;&#x6839;&#x8282;&#x70B9;&#x538B;&#x5165;&#x6808;&#xFF0C;&#x5F80;&#x540E;&#x904D;&#x5386;&#xFF0C;&#x53EA;&#x8981;&#x9047;&#x5230;&#x7684;&#x6570;&#x5B57;&#x6BD4;&#x6808;&#x9876;&#x5143;&#x7D20;&#x5C0F;&#xFF0C;&#x5C31;&#x8BF4;&#x660E;&#x662F;&#x5DE6;&#x5B50;&#x6811;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x7EE7;&#x7EED;&#x538B;&#x6808;&#xFF0C;&#x5982;&#x679C;&#x9047;&#x5230;&#x7684;&#x6570;&#x5B57;&#x6BD4;&#x6808;&#x9876;&#x5143;&#x7D20;&#x5927;&#xFF0C;&#x5C31;&#x662F;&#x53F3;&#x5B50;&#x6811;&#x7684;&#x5143;&#x7D20;&#x4E86;&#xFF0C;&#x7136;&#x540E;&#x6211;&#x4EEC;&#x66F4;&#x65B0;&#x6700;&#x5C0F;&#x503C;&#xFF0C;&#x5E76;&#x4E14;&#x5220;&#x9664;&#x6808;&#x9876;&#x5143;&#x7D20;&#xFF0C;&#x7EE7;&#x7EED;&#x5F80;&#x540E;&#x904D;&#x5386;&#xFF0C;&#x5982;&#x679C;&#x8FD8;&#x662F;&#x5927;&#x4E8E; &#xFF0C;&#x5C31;&#x7EE7;&#x7EED;&#x5220;&#x9664;&#x6808;&#x9876;&#x5143;&#x7D20;&#xFF0C;&#x5982;&#x679C;&#x6808;&#x7A7A;&#x4E86;&#x6216;&#x8005;&#x5F53;&#x524D;&#x6808;&#x9876;&#x5143;&#x7D20;&#x5927;&#x4E8E;&#x5F53;&#x524D;&#x503C;&#x5C31;&#x505C;&#x6B62;&#xFF0C;&#x5E76;&#x4E14;&#x538B;&#x5165;&#x5F53;&#x524D;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x5F53;&#x524D;&#x503C;&#x5C0F;&#x4E8E;&#x6700;&#x5C0F;&#x503C;&#x5C31;&#x62A5;&#x9519;&#x3002;&#xFF08;&#x8D44;&#x6599;&#x6765;&#x6E90;&#xFF1A;<a href="https://www.cnblogs.com/grandyang/p/5327635.html" target="_blank" rel="noopener">[LeetCode] Verify Preorder Sequence in Binary Search Tree &#x9A8C;&#x8BC1;&#x4E8C;&#x53C9;&#x641C;&#x7D22;&#x6811;&#x7684;&#x5148;&#x5E8F;&#x5E8F;&#x5217;</a>&#xFF09;</p>
+</li>
+<li><p>&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x601D;&#x8DEF;&#x662F;&#xFF0C;&#x770B;&#x89C4;&#x5F8B;&#xFF0C;&#x56E0;&#x4E3A;&#x5F00;&#x5934;&#x4E0D;&#x53EF;&#x80FD;&#x662F; <code>#</code> &#xFF0C;&#x901A;&#x8FC7;&#x89C2;&#x5BDF;&#x89C4;&#x5F8B;&#x662F;&#xFF0C;&#x6570;&#x7EC4;&#x7684;&#x6570;&#x76EE;&#x548C; &#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x6570;&#x5B57;&#x4E2A;&#x6570;&#x7684;&#x5173;&#x7CFB;&#x662F; :<code>n=num_n*2 +1</code></p>
+</li>
+</ol>
+</blockquote>
+<ul>
+<li>&#x4EE3;&#x7801;&#xFF1A;</li>
+</ul>
+<blockquote>
+<p>1.</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>{</span></span><br><span class="line">&gt;    <span class="keyword">public</span>:</span><br><span class="line">&gt;    <span class="function"><span class="keyword">bool</span> <span class="title">verifyPreorder</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp; preorder)</span></span>{</span><br><span class="line">&gt;        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt;s;</span><br><span class="line">&gt;        <span class="keyword">int</span> min_num = INT_MIN;</span><br><span class="line">&gt;        <span class="keyword">for</span>(<span class="keyword">auto</span> node : preorder){</span><br><span class="line">&gt;            <span class="keyword">if</span>(node&lt;min_num) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&gt;            <span class="keyword">while</span>(!s.empty() &amp;&amp; node &gt; s.top()){</span><br><span class="line">&gt;                min_num = s.top();</span><br><span class="line">&gt;                s.pop();</span><br><span class="line">&gt;            }</span><br><span class="line">&gt;            s.push(node);</span><br><span class="line">&gt;        }</span><br><span class="line">&gt;        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&gt;    }</span><br><span class="line">&gt;};</span><br><span class="line">&gt;</span><br></pre></td></tr></tbody></table></figure>
+</blockquote>
+<blockquote>
+<p>2.</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>{</span></span><br><span class="line">&gt;    <span class="keyword">public</span>:</span><br><span class="line">&gt;    <span class="function"><span class="keyword">bool</span> <span class="title">verifyPreorder</span><span class="params">(<span class="built_in">string</span> preorder)</span></span>{</span><br><span class="line">&gt;        preorder = preorder+<span class="string">&quot;,&quot;</span>;</span><br><span class="line">&gt;        <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">&gt;        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;preorder.size();i++){</span><br><span class="line">&gt;            <span class="keyword">if</span>(preorder[i] ==<span class="string">&apos;,&apos;</span>) <span class="keyword">continue</span>;</span><br><span class="line">&gt;            <span class="keyword">if</span>((--count)&lt;<span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&gt;            <span class="keyword">if</span>(preorder[i<span class="number">-1</span>]!=<span class="string">&apos;#&apos;</span>) count+=<span class="number">2</span>;</span><br><span class="line">&gt;        }</span><br><span class="line">&gt;        <span class="keyword">return</span> count==<span class="number">0</span>;</span><br><span class="line">&gt;    }</span><br><span class="line">&gt;};</span><br><span class="line">&gt;</span><br></pre></td></tr></tbody></table></figure>
+</blockquote>
+<blockquote>
+</blockquote>
+<h2><span id="101x5bf9x79f0x4e8cx53c9x6811-x7b80x5355">101.&#x5BF9;&#x79F0;&#x4E8C;&#x53C9;&#x6811;- &#x7B80;&#x5355;</span></h2><ul>
+<li>&#x9898;&#x76EE;&#x63CF;&#x8FF0;</li>
+</ul>
+<blockquote>
+<p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x4E8C;&#x53C9;&#x6811;&#xFF0C;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x955C;&#x50CF;&#x5BF9;&#x79F0;</p>
+<p>&#x6BD4;&#x5982;&#x4E8C;&#x53C9;&#x6811;[1,2,2,3,4,4,3]&#x5C31;&#x662F;&#x5BF9;&#x79F0;&#x7684;</p>
+<p>&#x591A;&#x5229;&#x7528;&#x8FED;&#x4EE3;&#x548C;&#x9012;&#x5F52;</p>
+</blockquote>
+<ul>
+<li>&#x89E3;&#x9898;&#x601D;&#x8DEF;</li>
+</ul>
+<blockquote>
+<p>&#x8FD9;&#x4E00;&#x9898;&#x601D;&#x8DEF;&#x4E0A;&#x4E0D;&#x96BE;&#xFF0C;&#x770B;&#x7684;&#x5F88;&#x6E05;&#x695A;&#xFF0C;&#x5C31;&#x662F;&#x5BF9;&#x6BD4;&#x5BF9;&#x79F0;&#x4F4D;&#x7F6E;&#x7684;&#x6570;&#x503C;&#x662F;&#x5426;&#x76F8;&#x7B49;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x9012;&#x5F52;&#x6765;&#x505A;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x6808;&#x6765;&#x505A;&#xFF0C;&#x601D;&#x8DEF;&#x4E5F;&#x6BD4;&#x8F83;&#x597D;&#x60F3;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x5B9E;&#x9645;&#x5199;&#x7684;&#x65F6;&#x5019;&#x3002;&#x51FA;&#x73B0;&#x4E86;&#x4E00;&#x4E9B;&#x95EE;&#x9898;&#xFF0C;&#x4E3B;&#x8981;&#x8FD8;&#x662F;&#x601D;&#x8DEF;&#x4E0D;&#x591F;&#x6E05;&#x6670;&#x5427;&#x3002;</p>
+</blockquote>
+<ul>
+<li>&#x4EE3;&#x7801;</li>
+</ul>
+<blockquote>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>{</span></span><br><span class="line">&gt;    <span class="keyword">public</span>:</span><br><span class="line">&gt;    <span class="function"><span class="keyword">bool</span> <span class="title">isSymmetric</span><span class="params">(TreeNode * root)</span></span>{</span><br><span class="line">&gt;        <span class="keyword">if</span>(!root) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&gt;        </span><br><span class="line">&gt;    }</span><br><span class="line">&gt;    <span class="keyword">private</span>:</span><br><span class="line">&gt;    <span class="function"><span class="keyword">bool</span> <span class="title">Dis_symmetric</span><span class="params">(TreeNode* left, TreeNode * right)</span></span>{</span><br><span class="line">&gt;        <span class="keyword">if</span>(!left &amp;&amp; !right) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&gt;        <span class="keyword">if</span>(!left || !right) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&gt;        <span class="keyword">return</span> (left-&gt;val == right-&gt;val) &amp;&amp; Dis_symmetric(left-&gt;left,right-&gt;right) &amp;&amp; Dis_symmetric(left-&gt;right,right-&gt;left);<span class="number">1</span></span><br><span class="line">&gt;    }</span><br><span class="line">&gt;}; </span><br><span class="line">&gt;</span><br><span class="line">&gt;</span><br></pre></td></tr></tbody></table></figure>
+</blockquote>
+<p>&#x6808;&#x7684;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<blockquote>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>{</span></span><br><span class="line">&gt;    <span class="keyword">public</span>:</span><br><span class="line">&gt;    <span class="function"><span class="keyword">bool</span> <span class="title">isSymmetric</span><span class="params">(TreeNode* root)</span></span>{</span><br><span class="line">&gt;        <span class="keyword">if</span>(!root) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&gt;        <span class="built_in">stack</span>&lt;TreeNode *&gt;s;</span><br><span class="line">&gt;        TreeNode *p= root-&gt;left,*q = root-&gt;right;</span><br><span class="line">&gt;        s.push(p);</span><br><span class="line">&gt;        s.push(q);</span><br><span class="line">&gt;        <span class="keyword">while</span>(!s.empty()){</span><br><span class="line">&gt;            p=s.top();s.pop();</span><br><span class="line">&gt;            q=s.top();s.pop();</span><br><span class="line">&gt;            </span><br><span class="line">&gt;            <span class="keyword">if</span>(!p &amp;&amp; !q) <span class="keyword">continue</span>;</span><br><span class="line">&gt;            <span class="keyword">if</span>(!p || !q) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&gt;            <span class="keyword">if</span>(p-&gt;val != q-&gt;val) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&gt;            </span><br><span class="line">&gt;            s.push(p-&gt;left);s.push()</span><br><span class="line">&gt;        }</span><br><span class="line">&gt;    }</span><br><span class="line">&gt;};</span><br><span class="line">&gt;</span><br></pre></td></tr></tbody></table></figure>
+</blockquote>
+<h2><span id="728-x81eax9664x6570-x7b80x5355">728. &#x81EA;&#x9664;&#x6570; - &#x7B80;&#x5355;</span></h2><ul>
+<li>&#x9898;&#x76EE;&#x63CF;&#x8FF0;</li>
+</ul>
+<blockquote>
+<p><em>&#x81EA;&#x9664;&#x6570;</em> &#x662F;&#x6307;&#x53EF;&#x4EE5;&#x88AB;&#x5B83;&#x5305;&#x542B;&#x7684;&#x6BCF;&#x4E00;&#x4F4D;&#x6570;&#x9664;&#x5C3D;&#x7684;&#x6570;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;128 &#x662F;&#x4E00;&#x4E2A;&#x81EA;&#x9664;&#x6570;&#xFF0C;&#x56E0;&#x4E3A; <code>128 % 1 == 0</code>&#xFF0C;<code>128 % 2 == 0</code>&#xFF0C;<code>128 % 8 == 0</code>&#x3002;</p>
+<p>&#x8FD8;&#x6709;&#xFF0C;&#x81EA;&#x9664;&#x6570;&#x4E0D;&#x5141;&#x8BB8;&#x5305;&#x542B; 0 &#x3002;</p>
+<p>&#x7ED9;&#x5B9A;&#x4E0A;&#x8FB9;&#x754C;&#x548C;&#x4E0B;&#x8FB9;&#x754C;&#x6570;&#x5B57;&#xFF0C;&#x8F93;&#x51FA;&#x4E00;&#x4E2A;&#x5217;&#x8868;&#xFF0C;&#x5217;&#x8868;&#x7684;&#x5143;&#x7D20;&#x662F;&#x8FB9;&#x754C;&#xFF08;&#x542B;&#x8FB9;&#x754C;&#xFF09;&#x5185;&#x6240;&#x6709;&#x7684;&#x81EA;&#x9664;&#x6570;&#x3002;</p>
+</blockquote>
+<ul>
+<li>&#x89E3;&#x9898;&#x601D;&#x8DEF;</li>
+</ul>
+<blockquote>
+<p>&#x8FD9;&#x9898;&#x6CA1;&#x5565;&#x7279;&#x522B;&#x7684;&#xFF0C;&#x5C31;&#x662F;&#x76F4;&#x63A5;&#x5C06;&#x6570;&#x5B57;&#x62C6;&#x5F00;&#xFF0C;&#x7136;&#x540E;&#x9664;&#x6389;&#x5C31;&#x884C;&#x4E86;&#x3002;</p>
+</blockquote>
+<ul>
+<li>&#x4EE3;&#x7801;</li>
+</ul>
+<blockquote>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span></span><br><span class="line">&gt;<span class="keyword">public</span>:</span><br><span class="line">&gt;    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; selfDividingNumbers(<span class="keyword">int</span> left, <span class="keyword">int</span> right) {</span><br><span class="line">&gt;         <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">&gt;		 <span class="keyword">for</span> (<span class="keyword">int</span> i=left;i&lt;=right;i++)</span><br><span class="line">&gt;		 {</span><br><span class="line">&gt;			 <span class="keyword">if</span> (self_div(i))</span><br><span class="line">&gt;			 {</span><br><span class="line">&gt;				 res.push_back(i);</span><br><span class="line">&gt;			 }</span><br><span class="line">&gt;		 }</span><br><span class="line">&gt;		<span class="keyword">return</span> res;</span><br><span class="line">&gt;    }</span><br><span class="line">&gt;    <span class="function"><span class="keyword">bool</span> <span class="title">self_div</span><span class="params">(<span class="keyword">int</span> n)</span> </span>{</span><br><span class="line">&gt;		 <span class="keyword">int</span> boss = n;</span><br><span class="line">&gt;		 </span><br><span class="line">&gt;		 <span class="keyword">while</span> (n!=<span class="number">0</span>)</span><br><span class="line">&gt;		{</span><br><span class="line">&gt;			 <span class="keyword">if</span> (n % <span class="number">10</span> !=<span class="number">0</span> &amp;&amp; boss%( n % <span class="number">10</span>) == <span class="number">0</span>)</span><br><span class="line">&gt;			 {</span><br><span class="line">&gt;				 n = n / <span class="number">10</span>;</span><br><span class="line">&gt;			 }<span class="keyword">else</span></span><br><span class="line">&gt;			 {</span><br><span class="line">&gt;				 <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&gt;			 }</span><br><span class="line">&gt;		}</span><br><span class="line">&gt;		 <span class="keyword">if</span> (n==<span class="number">0</span>)</span><br><span class="line">&gt;		 {</span><br><span class="line">&gt;			 <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&gt;		 }</span><br><span class="line">&gt;	 }</span><br><span class="line">&gt;};</span><br><span class="line">&gt;</span><br></pre></td></tr></tbody></table></figure>
 </blockquote>
 <blockquote>
 </blockquote>
@@ -817,7 +922,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -828,7 +933,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -839,7 +944,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -912,7 +1017,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">845. 数组中最长的山脉- 中等难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">357. 计算各个位数不同的数字个数- 中等难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">390. 消除游戏- 中等难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">623. 在二叉树中增加一行- 中等难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">81. 搜索旋转排序数组II -中等难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">104. 二叉树的最大深度 -简单难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">75. 颜色分类 – 中等难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">522. 最长特殊序列 II</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">95. 不同的二叉搜索树 II</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">845. 数组中最长的山脉- 中等难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">357. 计算各个位数不同的数字个数- 中等难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">390. 消除游戏- 中等难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">623. 在二叉树中增加一行- 中等难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">81. 搜索旋转排序数组II -中等难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">104. 二叉树的最大深度 -简单难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">75. 颜色分类 – 中等难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">522. 最长特殊序列 II -中等难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">95. 不同的二叉搜索树 II- 中等难度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">330 . 按要求补齐数组 -困难</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">331. 验证二叉树的前序序列化 - 中等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">101.对称二叉树- 简单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">728. 自除数 - 简单</span></a></li></ol></div>
             
 
           </div>
@@ -970,7 +1075,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共19.5k</span>字
+  <span class="post-count">博客全站共23.6k</span>字
 </div>
 
         
